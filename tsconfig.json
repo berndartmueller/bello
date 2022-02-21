@@ -2,11 +2,23 @@
   "compilerOptions": {
     "target": "es2018",
     "module": "commonjs",
+    "lib": ["ESNext"],
     "strict": true,
+    "moduleResolution": "node",
     "esModuleInterop": true,
-    "outDir": "dist",
-    "declaration": true
+    "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "noEmit": false,
+    "baseUrl": ".",
+    "types": ["node"],
+    "paths": {
+      "@bello/contracts": ["packages/contracts/src"],
+      "@bello/web": ["packages/web/src"],
+      "@bello/web/*": ["packages/web/src/*"]
+    }
   },
-  "include": ["./scripts", "./test", "./typechain"],
-  "files": ["./hardhat.config.ts"]
+  "buildOnSave": false
 }
