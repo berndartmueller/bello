@@ -8,7 +8,8 @@
     ]
   },
   "scripts": {
-    "contracts": "yarn workspace @bello/contracts"
+    "contracts": "yarn workspace @bello/contracts",
+    "web": "yarn workspace @bello/web"
   },
   "repository": "git@github.com:berndartmueller/bello.git",
   "author": "Bernd Artmüller <berndartmueller@gmail.com>",
