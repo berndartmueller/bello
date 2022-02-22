@@ -1,0 +1,29 @@
+{
+  "Add all twin imports": {
+    "scope": "javascript,typescript,typescriptreact",
+    "prefix": "twin",
+    "body": "import { css, cx } from '@linaria/core';\nimport { styled } from '@linaria/react';\nimport tw from 'twin.macro';",
+    "description": "Add all twin imports"
+  },
+
+  "Add className prop for twin": {
+    "scope": "javascript,typescript,typescriptreact",
+    "prefix": "cn",
+    "body": "\n\tclassName={css`\n\t\t${tw`${0}`}\n\t`}",
+    "description": "Add className prop for twin"
+  },
+
+  "Add conditional className prop for twin": {
+    "scope": "javascript,typescript,typescriptreact",
+    "prefix": "cx",
+    "body": "\n\tclassName={cx(css`\n\t\t${tw`${0}`}\n\t`)}",
+    "description": "Add conditional className prop for twin"
+  },
+
+  "Add new twin styled component": {
+    "scope": "javascript,typescript,typescriptreact",
+    "prefix": "const twin",
+    "body": "const ${1:Component} = styled.${2:div}`\n\t${tw`${0}`};\n`;",
+    "description": "Add new twin styled component"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "auto-close-tag.activationOnLanguage": ["html", "xml"],
+  "editor.tabSize": 2,
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "editor.detectIndentation": false,
+  "autoimport.spaceBetweenBraces": true,
+  "editor.formatOnSave": true,
+  "prettier.singleQuote": true,
+  "codemetrics.basics.ComplexityLevelNormal": 5,
+  "codemetrics.nodeconfiguration.ReturnStatement": 0,
+  "jestrunner.runOptions": ["--forceExit"],
+  "typescript.preferences.importModuleSpecifier": "non-relative",
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+  "scss.validate": false,
+  "editor.autoClosingQuotes": "always",
+  "tailwindCSS.experimental.classRegex": [
+    "tw`([^`]*)", // tw`...`
+    "tw=\"([^\"]*)", // <div tw="..." />
+    "tw={\"([^\"}]*)", // <div tw={"..."} />
+    "tw\\.\\w+`([^`]*)", // tw.xxx`...`
+    "tw\\(.*?\\)`([^`]*)" // tw(Component)`...`
+  ],
+  "tailwindCSS.includeLanguages": {
+    "typescript": "javascript",
+    "typescriptreact": "javascript"
+  },
+  "codemetrics.nodeconfiguration.JsxElement": 0,
+  "codemetrics.nodeconfiguration.JsxSelfClosingElement": 0
+}

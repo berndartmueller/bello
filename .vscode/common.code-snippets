@@ -1,0 +1,15 @@
+{
+  "Add JSX translate call": {
+    "scope": "javascript,typescript,typescriptreact",
+    "prefix": "i18",
+    "body": "{t('${0}')}",
+    "description": "Insert next-translate t() call"
+  },
+
+  "Add useTranslate()": {
+    "scope": "javascript,typescript,typescriptreact",
+    "prefix": "usetrans",
+    "body": "const { t } = useTranslation(${0});",
+    "description": "Insert useTranslate()"
+  }
+}
