@@ -17,13 +17,15 @@ export function toWei(value: string) {
  * Returns a string of form "abc...xyz"
  *
  * @param account ETH Account
- * @param n number of chars to keep at front/end
+ * @param {Object} options Options
+ * @param options.pre Number of chars to keep at front
+ * @param options.post Number of chars to keep at back
  * @returns Formatted ETH account string.
  */
-export const getFormattedETHAccount = (account: string, n = 5) => {
+export const getFormattedETHAccount = (account: string, { pre = 6, post = 4 }: { pre?: number; post?: number } = {}) => {
   if (account == null) {
     return '';
   }
 
-  return `${account.slice(0, n)}...${account.slice(account.length - n)}`;
+  return `${account.slice(0, pre)}...${account.slice(account.length - post)}`;
 };
