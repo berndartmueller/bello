@@ -18,9 +18,9 @@
     "paths": {
       "@contracts": ["./../contracts"],
       "@contracts/*": ["./../contracts/*"],
+      "@web/*": ["./src/*"],
       "@web/root": ["./"],
-      "@web/root/*": ["./*"],
-      "@web/*": ["./src/*"]
+      "@web/root/*": ["./*"]
     }
   },
   "include": ["next-env.d.ts", "./src/**/*.ts", "./src/**/*.tsx"],

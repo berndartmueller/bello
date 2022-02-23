@@ -1,6 +1,7 @@
 import Greeter from '@contracts/artifacts/src/Greeter.sol/Greeter.json';
 import { Greeter as GreeterContract } from '@contracts/typechain/Greeter';
 import { Account } from '@web/components/account';
+import { useContract } from '@web/root/src/hooks';
 import { hasEthereum } from '@web/utils/ethereum';
 import { ethers } from 'ethers';
 import type { NextPage } from 'next';
@@ -15,12 +16,6 @@ const Spacer = tw.div`block h-6`;
 
 const ConnectWalletButton = tw.button`bg-sky-800 text-white px-4 py-2 rounded-sm`;
 
-async function requestAccount() {
-  const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-
-  return accounts;
-}
-
 const providerOptions = {
   /* See Provider Options Section */
 };
@@ -29,6 +24,7 @@ const Home: NextPage = () => {
   const [web3ModalInstance, setWeb3ModalInstance] = React.useState<Web3Modal>();
   const [connectedWalletAddressState, setConnectedWalletAddressState] = React.useState('');
   const [connectedWalletAddress, setConnectedWalletAddress] = React.useState<string>();
+  const contract = useContract<GreeterContract>(process.env.NEXT_PUBLIC_GREETER_ADDRESS as string, Greeter.abi);
 
   // If wallet is already connected...
   React.useEffect(() => {
@@ -41,18 +37,15 @@ const Home: NextPage = () => {
     const web3Modal = new Web3Modal({
       providerOptions, // required
     });
-    console.log('asdf web3Modal', web3Modal);
+
     setWeb3ModalInstance(web3Modal);
   }, []);
 
   React.useEffect(() => {
     async function setConnectedWalletAddressInfo() {
       const instance = await web3ModalInstance?.connect();
-      console.log(web3ModalInstance, instance);
-      const provider = new ethers.providers.Web3Provider(instance);
 
-      const stuff = await provider.getBlockNumber();
-      console.log('asdf', stuff);
+      const provider = new ethers.providers.Web3Provider(instance);
 
       const signer = provider.getSigner();
 
@@ -93,10 +86,9 @@ const Home: NextPage = () => {
   };
 
   const greet = async () => {
-    const instance = await web3ModalInstance?.connect();
-    const provider = new ethers.providers.Web3Provider(instance);
-
-    const contract = new ethers.Contract(process.env.NEXT_PUBLIC_GREETER_ADDRESS as string, Greeter.abi, provider);
+    if (!contract) {
+      return;
+    }
 
     const data = await contract.greet();
 
@@ -104,11 +96,9 @@ const Home: NextPage = () => {
   };
 
   const changeGreeting = async () => {
-    const instance = await web3ModalInstance?.connect();
-    const provider = new ethers.providers.Web3Provider(instance);
-    const signer = provider.getSigner();
-
-    const contract = new ethers.Contract(process.env.NEXT_PUBLIC_GREETER_ADDRESS as string, Greeter.abi, signer) as GreeterContract;
+    if (!contract) {
+      return;
+    }
 
     const greeting = window.prompt('New greeting');
 
